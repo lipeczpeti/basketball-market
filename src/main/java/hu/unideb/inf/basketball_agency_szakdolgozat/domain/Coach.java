@@ -14,7 +14,7 @@ import java.io.File;
 @Getter
 @Setter
 @ToString
-public class Agent{
+public class Coach {
     @Id
     @GeneratedValue
     private int id;

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="profileDetails" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Edző részletes adatai</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img class="w-100" src="2544.avif" alt="">
+        <table>
+          <tbody>
+          <tr>
+            <th>
+              Megnevezés
+            </th>
+            <th>
+              Értékek
+            </th>
+          </tr>
+          <tr>
+            <td>
+              Vezetéknév
+            </td>
+            <td>
+              abc
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Keresztnév
+            </td>
+            <td>
+              abc
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bezár</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

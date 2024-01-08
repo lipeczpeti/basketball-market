@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:insert="head::header">
+<head th:replace="components/head::header">
 
     <title>Document</title>
 
 </head>
 <body>
-  <div class="container-body">
-      <div th:insert="navbar :: navbar">
+  <div id="body-content">
+      <div th:insert="components/navbar :: navbar">
 
       </div>
       <div class="container-fluid">
@@ -59,7 +59,7 @@
         </div>
       </div>
   </div>
-  <div th:insert="footer::footer">
+  <div th:insert="components/footer::footer">
 
   </div>
 </body>

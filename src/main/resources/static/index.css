@@ -2,20 +2,23 @@
     width: 180px;
     height: 180px;
 }
-.also{
-    
-}
+
 .bg-sajatszin{
     background-color: rgb(58, 107, 86);
 }
 
-.container-body{
-min-height: 85vh;
-}
-.container-footer{
-    min-height: 15vh;
-    
-}
 .pagination-center{
     justify-content: center !important;
+}
+
+#body-footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    background-color: darkmagenta;
+}
+
+.body-footer-block {
+    position: relative !important;
+    bottom: auto !important;
 }

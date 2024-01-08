@@ -36,7 +36,7 @@ public class User {
     private boolean active;
 
     @OneToMany(mappedBy = "user")
-    private List<Agent> agents;
+    private List<Coach> agents;
 
     @OneToMany(mappedBy = "user")
     private List<Player> players;
