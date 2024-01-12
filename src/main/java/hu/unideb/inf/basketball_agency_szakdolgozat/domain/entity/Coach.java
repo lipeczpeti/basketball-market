@@ -1,4 +1,4 @@
-package hu.unideb.inf.basketball_agency_szakdolgozat.domain;
+package hu.unideb.inf.basketball_agency_szakdolgozat.domain.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,7 +19,6 @@ public class Coach {
     @GeneratedValue
     private int id;
     private String phoneNumber;
-    private boolean privateAgent;
     private File cv;
     @ManyToOne
     private User user;

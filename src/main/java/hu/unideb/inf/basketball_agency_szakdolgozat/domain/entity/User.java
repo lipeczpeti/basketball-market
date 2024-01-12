@@ -1,4 +1,4 @@
-package hu.unideb.inf.basketball_agency_szakdolgozat.domain;
+package hu.unideb.inf.basketball_agency_szakdolgozat.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -36,9 +36,9 @@ public class User {
     private boolean active;
 
     @OneToMany(mappedBy = "user")
-    private List<Coach> agents;
+    private List<Coach> coach;
 
     @OneToMany(mappedBy = "user")
-    private List<Player> players;
+    private List<Player> player;
 
 }
