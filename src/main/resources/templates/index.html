@@ -26,21 +26,21 @@
           <div class="col-md-4 rounded-circle">
             <div class="buborek bg-success rounded-circle mx-auto d-table mb-4">
               <div class="text-center align-middle d-table-cell text-light">
-                <h2>Játékosok<br>230+</h2>
+                <h2>Játékosok<br><span th:text="${homeData.getPlayer()}"></span></h2>
               </div>
             </div>
           </div>
           <div class="col-md-4">
             <div class="buborek bg-success rounded-circle mx-auto d-table mb-4">
               <div class="text-center align-middle d-table-cell text-light">
-                <h2>Edzők<br>100+</h2>
+                <h2>Edzők<br><span th:text="${homeData.getCoach()}"></span></h2>
               </div>
             </div>
           </div>
           <div class="col-md-4">
             <div class="buborek bg-success rounded-circle mx-auto d-table mb-4">
               <div class="text-center align-middle d-table-cell text-light">
-                <h2>Klubok<br>66</h2>
+                <h2>Klubok<br><span th:text="${homeData.getClub()}"></span></h2>
               </div>
             </div>
           </div>

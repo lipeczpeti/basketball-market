@@ -68,7 +68,7 @@ public class DbSeederService {
         user2.setName("Ember2");
         user2.setCountry(country1);
         List<Language> languages2 = new ArrayList<>();
-        languages.add(language1);
+        languages2.add(language1);
         user2.setLanguages(languages2);
         user2.setEmail("2@ember2.hu");
         user2.setDate(new Date());
@@ -84,6 +84,27 @@ public class DbSeederService {
         player1.setContract(true);
         player1.setUser(user2);
         playerRepository.save(player1);
+
+        User user3 = new User();
+        user3.setName("Player3");
+        user3.setCountry(country1);
+        List<Language> languages3 = new ArrayList<>();
+        languages3.add(language1);
+        user3.setLanguages(languages3);
+        user3.setEmail("3@ember3.hu");
+        user3.setDate(new Date());
+        user3.setPassword("1234");
+        userRepository.save(user3);
+
+        Player player2 = new Player();
+        player2.setHand(Hand.LEFT);
+        player2.setHeight(201);
+        player2.setPosition(4);
+        player2.setMinSalary(220000);
+        player2.setWeight(105);
+        player2.setContract(false);
+        player2.setUser(user3);
+        playerRepository.save(player2);
 
     }
 }

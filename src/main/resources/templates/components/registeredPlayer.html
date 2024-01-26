@@ -22,23 +22,11 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>45</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>otto</td>
-                        <td>45</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry the Bird</td>
-                        <td>45</td>
-                        <td>@twitter</td>
+                    <tr th:each="player:${homeData.getPlayers()}">
+                        <th th:text="${player.getId()}" scope="row"></th>
+                        <td th:text="${player.getUser().getName()}"></td>
+                        <td th:text="${player.getUser().getDate()}"></td>
+                        <td th:text="${player.isContract()}"></td>
                     </tr>
                     </tbody>
                 </table>
