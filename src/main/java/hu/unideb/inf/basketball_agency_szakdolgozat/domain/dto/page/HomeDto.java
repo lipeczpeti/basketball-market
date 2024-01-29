@@ -1,4 +1,4 @@
-package hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto;
+package hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto.page;
 
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.entity.Coach;
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.entity.Player;

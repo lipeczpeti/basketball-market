@@ -1,6 +1,6 @@
 package hu.unideb.inf.basketball_agency_szakdolgozat.services;
 
-import hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto.HomeDto;
+import hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto.page.HomeDto;
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.entity.Coach;
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.entity.Player;
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.entity.Team;

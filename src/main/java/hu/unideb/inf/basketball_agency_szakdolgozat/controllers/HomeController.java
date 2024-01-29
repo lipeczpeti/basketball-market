@@ -1,7 +1,6 @@
 package hu.unideb.inf.basketball_agency_szakdolgozat.controllers;
 
-import hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto.HomeDto;
-import hu.unideb.inf.basketball_agency_szakdolgozat.repositories.CoachRepository;
+import hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto.page.HomeDto;
 import hu.unideb.inf.basketball_agency_szakdolgozat.services.HomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

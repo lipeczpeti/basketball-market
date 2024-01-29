@@ -26,7 +26,7 @@
                         <th th:text="${player.getId()}" scope="row"></th>
                         <td th:text="${player.getUser().getName()}"></td>
                         <td th:text="${player.getUser().getDate()}"></td>
-                        <td th:text="${player.isContract()}"></td>
+                        <td th:text='${player.isContract() ? "Van" : "Nincs"}'></td>
                     </tr>
                     </tbody>
                 </table>
