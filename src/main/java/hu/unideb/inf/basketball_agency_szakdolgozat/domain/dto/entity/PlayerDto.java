@@ -18,5 +18,6 @@ public class PlayerDto {
     private int minSalary;
     private Hand hand;
     private boolean contract;
+
     private UserDto user;
 }

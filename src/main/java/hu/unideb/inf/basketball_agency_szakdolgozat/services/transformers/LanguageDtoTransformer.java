@@ -2,10 +2,11 @@ package hu.unideb.inf.basketball_agency_szakdolgozat.services.transformers;
 
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto.entity.LanguageDto;
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.entity.Language;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Component
 public class LanguageDtoTransformer {
     public LanguageDto transform(Language language){
         return LanguageDto.builder()
