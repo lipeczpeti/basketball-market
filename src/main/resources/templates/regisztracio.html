@@ -21,35 +21,52 @@
                 </h2>
                 <table class="table w-50 mx-auto">
                     <tbody>
-                      <tr>
-                        <th scope="row">Felhasznalónév</th>
-                        <td><input type="text" /></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Email</th>
-                        <td><input type="email"></td>
+                        <form action="/regisztracio" method="post">
+                            <tr>
+                                <th scope="row">Felhasznaló típus</th>
+                                <td>
+                                    <input type="radio" name="userType" value="coach"/> Edző <br>
+                                    <input type="radio" name="userType" value="player"/> Játékos <br>
+                                </td>
+                            </tr>
+                          <tr>
+                            <th scope="row">Felhasznalónév</th>
+                            <td><input type="text" name="username"/></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Email</th>
+                            <td><input type="email" name="email"></td>
 
-                      </tr>
-                      <tr>
-                        <th scope="row">Jelszó</th>
-                        <td><input type="password"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Jelszó megerősítés</th>
-                        <td><input type="password"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Profil kép</th>
-                        <td><input type="file"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Születési dátum</th>
-                        <td><input type="date"></td>
-                      </tr>
-                      <tr>
-                        <th><a class="btn btn-primary text-light" href="#" role="button">Regisztrálás</a></th>
-                        <th><a class="btn btn-primary text-light" href="#" role="button">Kilép</a></th>
-                      </tr>
+                          </tr>
+                          <tr>
+                            <th scope="row">Jelszó</th>
+                            <td><input type="password" name="password1"></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Jelszó megerősítés</th>
+                            <td><input type="password" name="password2"></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Profil kép</th>
+                            <td><input type="file" name="profile"></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Születési dátum</th>
+                            <td><input type="date" name="birthday"></td>
+                          </tr>
+                            <tr>
+                                <th scope="row">Telefonszám</th>
+                                <td><input type="text" name="phoneNumber"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">CV (önéletrajz)</th>
+                                <td><input type="file" name="cv"></td>
+                            </tr>
+                          <tr>
+                            <th><button class="btn btn-primary text-light" role="button">Regisztrálás</button></th>
+                            <th><a class="btn btn-primary text-light" href="#" role="button">Kilép</a></th>
+                          </tr>
+                        </form>
                     </tbody>
                   </table>
             </div>

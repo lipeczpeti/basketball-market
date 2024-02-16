@@ -8,7 +8,7 @@ import hu.unideb.inf.basketball_agency_szakdolgozat.repositories.CoachRepository
 import hu.unideb.inf.basketball_agency_szakdolgozat.repositories.PlayerRepository;
 import hu.unideb.inf.basketball_agency_szakdolgozat.repositories.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import hu.unideb.inf.basketball_agency_szakdolgozat.services.transformers.HomeDtoTransformer;
+import hu.unideb.inf.basketball_agency_szakdolgozat.services.transformers.full.HomeDtoTransformer;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

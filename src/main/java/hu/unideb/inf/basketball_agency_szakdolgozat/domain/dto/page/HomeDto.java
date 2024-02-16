@@ -1,5 +1,8 @@
 package hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto.page;
 
+import hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto.entity.full.CoachDto;
+import hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto.entity.full.PlayerDto;
+import hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto.entity.full.TeamDto;
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.entity.Coach;
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.entity.Player;
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.entity.Team;
@@ -16,8 +19,8 @@ public class HomeDto {
     private long player;
     private long club;
 
-    private List<Player> players;
-    private List<Coach> coaches;
-    private List<Team> teams;
+    private List<PlayerDto> players;
+    private List<CoachDto> coaches;
+    private List<TeamDto> teams;
 
 }

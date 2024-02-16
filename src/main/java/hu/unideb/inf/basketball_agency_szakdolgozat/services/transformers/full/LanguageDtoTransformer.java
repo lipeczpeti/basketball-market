@@ -1,6 +1,7 @@
-package hu.unideb.inf.basketball_agency_szakdolgozat.services.transformers;
+package hu.unideb.inf.basketball_agency_szakdolgozat.services.transformers.full;
 
-import hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto.entity.LanguageDto;
+import hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto.entity.full.LanguageDto;
+import hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto.entity.mini.LanguageMiniDto;
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.entity.Language;
 import org.springframework.stereotype.Component;
 

@@ -17,28 +17,16 @@
                     <tr>
                         <th scope="col"></th>
                         <th scope="col">Név</th>
-                        <th scope="col">Életkor</th>
-                        <th scope="col">Szerződés</th>
+                        <th scope="col"></th>
+                        <th scope="col">Profil kép</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>45</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>otto</td>
-                        <td>45</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry the Bird</td>
-                        <td>45</td>
-                        <td>@twitter</td>
+                    <tr th:each="team:${homeData.getTeams()}">
+                        <th th:text="${team.getId()}" scope="row"></th>
+                        <td th:text="${team.getName()}"></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     </tbody>
                 </table>

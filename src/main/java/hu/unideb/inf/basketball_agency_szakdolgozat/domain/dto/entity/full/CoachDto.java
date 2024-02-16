@@ -1,6 +1,7 @@
-package hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto.entity;
+package hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto.entity.full;
 
 
+import hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto.entity.mini.UserMiniDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
@@ -15,5 +16,5 @@ public class CoachDto {
     private String phoneNumber;
     private File cv;
 
-    private UserDto user;
+    private UserMiniDto user;
 }
