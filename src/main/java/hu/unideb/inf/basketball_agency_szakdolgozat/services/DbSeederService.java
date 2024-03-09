@@ -57,6 +57,7 @@ public class DbSeederService {
         user1.setEmail("ember@ember.hu");
         user1.setDate(new Date());
         user1.setPassword("123");
+        user1.setActive(true);
         userRepository.save(user1);
 
         Coach coach1 = new Coach();

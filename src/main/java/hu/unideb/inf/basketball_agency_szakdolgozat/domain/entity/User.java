@@ -22,12 +22,12 @@ public class User {
     private String name;
     private String email;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Country country;
 
     private Date date;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Language> languages;
 
     private String password;
@@ -35,10 +35,10 @@ public class User {
     private boolean approved;
     private boolean active;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<Coach> coach;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<Player> player;
 
 }

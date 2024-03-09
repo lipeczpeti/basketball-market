@@ -26,43 +26,28 @@
                     Szerződés: <input type="checkbox" name="szerződés">
                     <a class="btn btn-primary text-light" href="#" role="button">Szűrés</a>
                 </form>
+                <b>Találatok száma: </b> <span th:text="${totalCoaches}"></span><br />
                 <table class="table table-hover">
                     <thead>
                       <tr>
                         <th scope="col"></th>
                         <th scope="col">Név</th>
                         <th scope="col">Életkor</th>
-                        <th scope="col">Szerződés</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>45</td>
-                        <td>@mdo</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>otto</td>
-                        <td>45</td>
-                        <td>@fat</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Larry the Bird</td>
-                        <td>45</td>
-                        <td>@twitter</td>
+                      <tr th:each="coach : ${coaches}">
+                        <th th:text="${coach.getId()}" scope="row">1</th>
+                        <td th:text="${coach.getUser().getName()}">Mark</td>
+                        <td th:text="${coach.getUser().getDate()}">45</td>
                       </tr>
                     </tbody>
                   </table>
                   <nav aria-label="...">
                     <ul class="pagination pagination-lg pagination-center">
-                      <li class="page-item active" aria-current="page">
-                        <span class="page-link">1</span>
-                      </li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item" th:each="currentPage : ${#numbers.sequence(1, pages)}">
+                            <a class="page-link" th:href='${"?page="+currentPage}' th:text="${currentPage}"></a>
+                        </li>
                     </ul>
                   </nav>
             </div>
