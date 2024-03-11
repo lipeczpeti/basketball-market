@@ -48,22 +48,8 @@ public class DbSeederService {
         team1.setTeamCategories(teamCategories);
         teamRepository.save(team1);
 
-        User user1 = new User();
-        user1.setName("Ember");
-        List<Language>languages=new ArrayList<>();
-        languages.add(language1);
-        user1.setLanguages(languages);
-        user1.setCountry(country1);
-        user1.setEmail("ember@ember.hu");
-        user1.setDate(new Date());
-        user1.setPassword("123");
-        user1.setActive(true);
-        userRepository.save(user1);
+        seedCoaches(language1, country1);
 
-        Coach coach1 = new Coach();
-        coach1.setPhoneNumber("323232");
-        coach1.setUser(user1);
-        coachRepository.save(coach1);
 
         User user2 = new User();
         user2.setName("Ember2");
@@ -106,6 +92,28 @@ public class DbSeederService {
         player2.setContract(false);
         player2.setUser(user3);
         playerRepository.save(player2);
+
+    }
+
+    public void seedCoaches(Language language1, Country country1) {
+        for (int i = 0; i < 12; i++) {
+            User user1 = new User();
+            user1.setName("Ember"+i);
+            List<Language>languages=new ArrayList<>();
+            languages.add(language1);
+            user1.setLanguages(languages);
+            user1.setCountry(country1);
+            user1.setEmail("ember@ember.hu"+i);
+            user1.setDate(new Date());
+            user1.setPassword("123");
+            user1.setActive(true);
+            userRepository.save(user1);
+
+            Coach coach1 = new Coach();
+            coach1.setPhoneNumber("323232");
+            coach1.setUser(user1);
+            coachRepository.save(coach1);
+        }
 
     }
 }

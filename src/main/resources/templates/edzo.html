@@ -20,11 +20,10 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8 bg-white text-dark text-center mt-4 rounded m-4  p-4">
-                <form class="mb-3 fw-bold" action="">
-                    Név: <input type="text" name="név">
-                    Életkor: <input type="number" name="életkortol" > - <input type="number" name="életkorig">
-                    Szerződés: <input type="checkbox" name="szerződés">
-                    <a class="btn btn-primary text-light" href="#" role="button">Szűrés</a>
+                <form class="mb-3 fw-bold" action="/edzo" method="get">
+                    Név: <input type="text" name="byName">
+                    Életkor: <input type="number" name="byAgeMin" min="0" > - <input type="number" name="byAgeMax" min="0">
+                    <button class="btn btn-primary text-light">Szűrés</button>
                 </form>
                 <b>Találatok száma: </b> <span th:text="${totalCoaches}"></span><br />
                 <table class="table table-hover">
@@ -45,8 +44,8 @@
                   </table>
                   <nav aria-label="...">
                     <ul class="pagination pagination-lg pagination-center">
-                        <li class="page-item" th:each="currentPage : ${#numbers.sequence(1, pages)}">
-                            <a class="page-link" th:href='${"?page="+currentPage}' th:text="${currentPage}"></a>
+                        <li th:each="pageIndex : ${#numbers.sequence(1, pages)}" th:class='${currentPage == pageIndex ? "page-item active" : "page-item"}' >
+                            <a class="page-link" th:href='${"?page="+pageIndex}' th:text="${pageIndex}"></a>
                         </li>
                     </ul>
                   </nav>
