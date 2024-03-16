@@ -14,7 +14,7 @@ public class UserMiniDto {
     private int id;
     private String name;
     private String email;
-    private Date date;
+    private String date;
     private String password;
     private File avatar;
     private boolean approved;

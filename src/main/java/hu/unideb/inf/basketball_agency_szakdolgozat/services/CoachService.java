@@ -3,12 +3,14 @@ package hu.unideb.inf.basketball_agency_szakdolgozat.services;
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto.entity.full.CoachDto;
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto.page.CoachTableDto;
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.entity.Coach;
+import hu.unideb.inf.basketball_agency_szakdolgozat.domain.entity.User;
 import hu.unideb.inf.basketball_agency_szakdolgozat.repositories.CoachRepository;
 import hu.unideb.inf.basketball_agency_szakdolgozat.repositories.UserRepository;
 import hu.unideb.inf.basketball_agency_szakdolgozat.services.transformers.full.CoachDtoTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -24,25 +26,30 @@ public class CoachService {
     @Autowired
     private CoachDtoTransformer coachDtoTransformer;
 
-    public List<Coach> getCoachesByNameAndMinAgeAndMaxAge(String name, int ageMin, int ageMax) {
-
+    public List<CoachDto> getCoachesByNameAndMinAgeAndMaxAge(String name, int ageMin, int ageMax) {
         /*
-            FORM:
-            agemin: 0
-            agemax: 24
-
-            REPOSITORY:
-            start: 2000 (mostani dátum - agemax)
-            end: 2024 (mustani dátum - agemin)
-
             https://www.callicoder.com/how-to-add-subtract-days-hours-minutes-seconds-to-date-java/
             https://www.studytonight.com/java-examples/java-localdate-minusyears-method   <--- jobb
          */
 
-        Date startDate;
+        Date now = new Date();
+        Calendar calendar = Calendar.getInstance();
 
+        calendar.setTime(now);
+        calendar.add(Calendar.YEAR, ageMax * -1);
+        Date startDate = calendar.getTime();
 
-        return null;
+        calendar.setTime(now);
+        calendar.add(Calendar.YEAR, ageMin * -1);
+        Date endDate = calendar.getTime();
+
+        List<Coach> coaches = userRepository.findByNameContainsAndDateAfterAndDateBefore(name, startDate, endDate)
+                .stream()
+                .filter(user -> !user.getCoach().isEmpty())
+                .map(user -> user.getCoach().get(0))
+                .toList();
+
+        return coachDtoTransformer.transformWithDependenciesList(coaches);
     }
 
     public CoachTableDto getCoachesByPages(int page, final int pageSize){

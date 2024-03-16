@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -96,6 +97,9 @@ public class DbSeederService {
     }
 
     public void seedCoaches(Language language1, Country country1) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+
         for (int i = 0; i < 12; i++) {
             User user1 = new User();
             user1.setName("Ember"+i);
@@ -104,7 +108,7 @@ public class DbSeederService {
             user1.setLanguages(languages);
             user1.setCountry(country1);
             user1.setEmail("ember@ember.hu"+i);
-            user1.setDate(new Date());
+            user1.setDate(calendar.getTime());
             user1.setPassword("123");
             user1.setActive(true);
             userRepository.save(user1);
@@ -113,6 +117,8 @@ public class DbSeederService {
             coach1.setPhoneNumber("323232");
             coach1.setUser(user1);
             coachRepository.save(coach1);
+
+            calendar.add(Calendar.YEAR, -1);
         }
 
     }

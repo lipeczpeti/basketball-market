@@ -6,17 +6,21 @@ import hu.unideb.inf.basketball_agency_szakdolgozat.domain.entity.User;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Component
 public class UserMiniDtoTransformer {
 
     public UserMiniDto transform(User user){
+        Date now = new Date();
+        String age = now.getYear() - user.getDate().getYear() + "";
+
         return UserMiniDto.builder()
                 .id(user.getId())
                 .name(user.getName())
                 .email(user.getEmail())
-                .date(user.getDate())
+                .date(age)
                 .password(user.getPassword())
                 .avatar(user.getAvatar())
                 .approved(user.isApproved())

@@ -28,9 +28,9 @@ public class HomeService {
         long coachCount = coachRepository.count();
         long playerCount = playerRepository.count();
         long clubCount = teamRepository.count();
-        List<Player> players = playerRepository.findAll();
-        List<Coach> coaches = coachRepository.findAll();
-        List<Team> teams = teamRepository.findAll();
+        List<Player> players = playerRepository.findFirst5ByOrderByIdDesc();
+        List<Coach> coaches = coachRepository.findFirst5ByOrderByIdDesc();
+        List<Team> teams = teamRepository.findFirst5ByOrderByIdDesc();
 
         HomeDto result = homeDtoTransformer.transform(coachCount,playerCount,clubCount,players,coaches,teams);
 

@@ -24,7 +24,7 @@ public class UserDto {
 
     private CountryDto country;
 
-    private Date date;
+    private String date;
 
     private List<LanguageMiniDto> languages;
 

@@ -22,16 +22,15 @@ public class CoachController {
             @RequestParam(required = false, defaultValue = "1") Integer page,
             @RequestParam(required = false, defaultValue = "5") Integer pageSize,
             @RequestParam(required = false, defaultValue = "") String byName,
-            @RequestParam(required = false, defaultValue = "-1") Integer byAgeMin,
-            @RequestParam(required = false, defaultValue = "-1") Integer byAgeMax){
+            @RequestParam(required = false, defaultValue = "0") Integer byAgeMin,
+            @RequestParam(required = false, defaultValue = "99") Integer byAgeMax){
 
         CoachTableDto coachTable;
-        if (byAgeMax != -1 || byAgeMin != -1 || !byName.equals("")) {
-
-
-            // kereső logika
+        if (byAgeMax != 99 || byAgeMin != 0 || !byName.isEmpty()) {
             coachTable = new CoachTableDto();
+            coachTable.setCoaches(coachService.getCoachesByNameAndMinAgeAndMaxAge(byName, byAgeMin, byAgeMax));
             coachTable.setPages(1);
+            coachTable.setTotalCoaches(coachTable.getCoaches().size());
 
         } else {
             coachTable = coachService.getCoachesByPages(page,pageSize);
@@ -41,6 +40,9 @@ public class CoachController {
         model.addAttribute("pages", coachTable.getPages());
         model.addAttribute("currentPage", page);
         model.addAttribute("totalCoaches", coachTable.getTotalCoaches());
+        model.addAttribute("byName", byName);
+        model.addAttribute("byAgeMin", byAgeMin);
+        model.addAttribute("byAgeMax", byAgeMax);
 
         return "edzo";
     }
