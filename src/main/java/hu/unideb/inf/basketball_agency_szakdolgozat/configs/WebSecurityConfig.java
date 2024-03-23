@@ -30,13 +30,6 @@ public class WebSecurityConfig implements WebMvcConfigurer {
     @Autowired
     private UserRepository userRepository;
 
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/login").setViewName("index");
-        registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
-    }
-
-
     @Bean
     MvcRequestMatcher.Builder mvc(HandlerMappingIntrospector introspector) {
         return new MvcRequestMatcher.Builder(introspector);
@@ -48,6 +41,7 @@ public class WebSecurityConfig implements WebMvcConfigurer {
         http.sessionManagement(configurer -> configurer.sessionCreationPolicy(SessionCreationPolicy.ALWAYS));
 
         http.authorizeHttpRequests((requests) -> requests
+                    .requestMatchers(builder.pattern("/h2-console/**")).permitAll()
                     .requestMatchers(builder.pattern("/")).permitAll()
                     .requestMatchers(builder.pattern("/login")).permitAll()
                     .requestMatchers(builder.pattern("/edzo")).hasRole("COACH")
@@ -57,7 +51,6 @@ public class WebSecurityConfig implements WebMvcConfigurer {
             )
             .formLogin(login -> {
                 login.permitAll();
-                login.loginPage("/login");
             });
 
         return http.build();

@@ -71,6 +71,7 @@ public class DbSeederService {
         player1.setWeight(89);
         player1.setContract(true);
         player1.setUser(user2);
+        player1.setTeam(team1);
         playerRepository.save(player1);
 
         User user3 = new User();
@@ -92,6 +93,7 @@ public class DbSeederService {
         player2.setWeight(105);
         player2.setContract(false);
         player2.setUser(user3);
+        player2.setTeam(team1);
         playerRepository.save(player2);
 
     }

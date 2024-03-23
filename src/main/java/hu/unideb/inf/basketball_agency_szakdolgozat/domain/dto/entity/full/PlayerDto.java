@@ -1,5 +1,6 @@
 package hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto.entity.full;
 
+import hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto.entity.mini.TeamMiniDto;
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto.entity.mini.UserMiniDto;
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.entity.Hand;
 import lombok.Builder;
@@ -21,4 +22,5 @@ public class PlayerDto {
     private boolean contract;
 
     private UserMiniDto user;
+    private TeamMiniDto team;
 }

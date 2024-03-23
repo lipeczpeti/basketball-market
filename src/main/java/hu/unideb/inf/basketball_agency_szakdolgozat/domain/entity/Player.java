@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -24,4 +26,6 @@ public class Player {
     private boolean contract;
     @ManyToOne
     private User user;
+    @ManyToOne
+    private Team team;
 }

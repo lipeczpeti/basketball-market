@@ -2,6 +2,8 @@ package hu.unideb.inf.basketball_agency_szakdolgozat.services.transformers.full;
 
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto.entity.full.PlayerDto;
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.entity.Player;
+import hu.unideb.inf.basketball_agency_szakdolgozat.services.transformers.mini.TeamCategoryMiniDtoTransformer;
+import hu.unideb.inf.basketball_agency_szakdolgozat.services.transformers.mini.TeamMiniDtoTransformer;
 import hu.unideb.inf.basketball_agency_szakdolgozat.services.transformers.mini.UserMiniDtoTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,6 +16,9 @@ public class PlayerDtoTransformer {
     @Autowired
     private UserMiniDtoTransformer userMiniDtoTransformer;
 
+    @Autowired
+    private TeamMiniDtoTransformer teamMiniDtoTransformer;
+
 
     public PlayerDto transformWithDependencies(Player player){
         return PlayerDto.builder()
@@ -25,6 +30,7 @@ public class PlayerDtoTransformer {
                 .hand(player.getHand())
                 .contract(player.isContract())
                 .user(userMiniDtoTransformer.transform(player.getUser()))
+                .team(teamMiniDtoTransformer.transform(player.getTeam()))
                 .build();
     }
 

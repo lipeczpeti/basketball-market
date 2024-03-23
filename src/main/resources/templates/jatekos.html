@@ -32,49 +32,37 @@
                         <th scope="col"></th>
                         <th scope="col">Név</th>
                         <th scope="col">Életkor</th>
+                          <th scope="col">Csapat</th>
                         <th scope="col">Szerződés</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>45</td>
-                        <td>@mdo</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>otto</td>
-                        <td>45</td>
-                        <td>@fat</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Larry the Bird</td>
-                        <td>45</td>
-                        <td>@twitter</td>
-                      </tr>
+                        <tr class="coach-row-table" data-bs-toggle="modal" data-bs-target="#exampleModal" th:each="player, playerStat : ${players}" th:data-id="${player.getId()}" th:data-name="${player.getUser().getName()}" th:data-birthday="${player.getUser().getDate()}"  th:data-email="${player.getUser().getEmail()}" th:data-height="${player.getHeight()}" th:data-weight="${player.getWeight()}" th:data-position="${player.getPosition()}" th:data-min-salary="${player.getMinSalary()}" th:data-hand="${player.getHand()}" th:data-contract="${player.isContract()}">
+                            <th th:text="${player.getId()}" scope="row"></th>
+                            <td th:text="${player.getUser().getName()}"></td>
+                            <td th:text="${player.getUser().getDate()}"></td>
+                            <td th:text="${player.getTeam().getName()}"></td>
+                            <td th:text='${player.isContract() ? "Van" : "Nincs"}'></td>
+                        </tr>
                     </tbody>
                   </table>
-                  <nav aria-label="...">
+
+                <nav aria-label="...">
                     <ul class="pagination pagination-lg pagination-center">
-                      <li class="page-item active" aria-current="page">
-                        <span class="page-link">1</span>
-                      </li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li th:each="pageIndex : ${#numbers.sequence(1, pages)}" th:class='${currentPage == pageIndex ? "page-item active" : "page-item"}' >
+                            <a class="page-link" th:href='${"?page="+pageIndex}' th:text="${pageIndex}"></a>
+                        </li>
                     </ul>
-                  </nav>
+                </nav>
             </div>
             <div class="col-md-2"></div>
         </div>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Launch demo modal
-        </button>
 
         <div th:insert="components/profileDetails::profileDetails">
 
         </div>
+        <script src="/static/player-table-loader.js" defer></script>
+
     </div>
 </body>
 </html>
