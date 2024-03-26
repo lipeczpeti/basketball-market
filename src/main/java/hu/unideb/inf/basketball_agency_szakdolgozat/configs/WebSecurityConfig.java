@@ -41,17 +41,21 @@ public class WebSecurityConfig implements WebMvcConfigurer {
         http.sessionManagement(configurer -> configurer.sessionCreationPolicy(SessionCreationPolicy.ALWAYS));
 
         http.authorizeHttpRequests((requests) -> requests
-                    .requestMatchers(builder.pattern("/h2-console/**")).permitAll()
+                    .requestMatchers(antMatcher("/h2-console/*")).permitAll()
+                    .requestMatchers(builder.pattern("/static/**")).permitAll()
                     .requestMatchers(builder.pattern("/")).permitAll()
                     .requestMatchers(builder.pattern("/login")).permitAll()
                     .requestMatchers(builder.pattern("/edzo")).hasRole("COACH")
-                    .requestMatchers(antMatcher("/h2-console/*")).permitAll()
-                    .requestMatchers(builder.pattern("/static/**")).permitAll()
+                    .requestMatchers(builder.pattern("/admin")).hasRole("ADMIN")
                     .anyRequest().authenticated()
             )
             .formLogin(login -> {
                 login.permitAll();
-            });
+                login.failureUrl("/?login=true&error=loginError");
+                login.loginPage("/?login=true");
+                login.loginProcessingUrl("/login");
+
+            }).logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/").permitAll());
 
         return http.build();
     }
