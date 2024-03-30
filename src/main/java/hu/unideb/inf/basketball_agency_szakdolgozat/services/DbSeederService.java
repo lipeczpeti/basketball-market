@@ -138,6 +138,7 @@ public class DbSeederService {
         user1.setDate(new Date());
         user1.setPassword("admin");
         user1.setActive(true);
+        user1.setApproved(true);
         user1.setAdmin(true);
         userRepository.save(user1);
     }
