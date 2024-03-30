@@ -9,7 +9,9 @@ import java.util.List;
 
 @Repository
 public interface UserRepository extends JpaRepository<User,Integer> {
-    public User findByName(String name);
-    public User findByEmail(String email);
+    User findByName(String name);
+    User findByEmail(String email);
     List<User> findByNameContainsAndDateAfterAndDateBefore(String name, Date min, Date max);
+
+    List<User> findByApprovedFalse();
 }

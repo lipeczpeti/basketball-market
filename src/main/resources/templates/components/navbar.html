@@ -26,6 +26,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/edzo">Edzők</a>
                 </li>
+                <li th:if='${#authentication.getAuthorities().stream().toList().get(0).getAuthority().equals("ROLE_ADMIN")}' class="nav-item">
+                    <a class="nav-link" href="/admin">Admin</a>
+                </li>
             </ul>
             <span class="navbar-text">
               <button class="btn btn-primary text-light" data-bs-toggle="modal" data-bs-target="#exampleModal" role="button" sec:authorize="isAnonymous()">Bejelentkezés</button>

@@ -21,12 +21,18 @@ public class UserAdapter implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-        if(user.getPlayer().size()>0){
+
+        if (user.isAdmin()) {
+            SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority("ROLE_ADMIN");
+            grantedAuthorities.add(simpleGrantedAuthority);
+        }
+
+        if(!user.getPlayer().isEmpty()){
             SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority("ROLE_PLAYER");
             grantedAuthorities.add(simpleGrantedAuthority);
         }
 
-        if (user.getCoach().size()>0){
+        if (!user.getCoach().isEmpty()){
             SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority("ROLE_COACH");
             grantedAuthorities.add(simpleGrantedAuthority);
         }
@@ -51,7 +57,7 @@ public class UserAdapter implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return user.isActive();
     }
 
     @Override
@@ -61,6 +67,6 @@ public class UserAdapter implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return user.isActive();
+        return user.isApproved();
     }
 }

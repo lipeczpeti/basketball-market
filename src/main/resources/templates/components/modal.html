@@ -15,6 +15,9 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
+                        <div th:if='${error.equals("loginError")}' class="alert alert-danger">
+                            Hibás fehasználónév vagy jelszó!
+                        </div>
                         <table class="table">
                             <tbody>
                             <tr>
@@ -39,38 +42,6 @@
         </form>
     </div>
 
-    <div class="modal fade" id="no-permission-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <form th:action="@{/login}" method="post">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel2">Bejelentkezés</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <table class="table">
-                            <tbody>
-                            <tr>
-                                <th scope="row">Email</th>
-                                <td><input class="form-control" name="username" type="email"></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Jelszó</th>
-                                <td><input class="form-control" name="password" type="password"></td>
-                            </tr>
-                            <tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mégse</button>
-                        <input value="belépés" type="submit" class="btn btn-primary">
-                    </div>
-                </div>
-            </div>
-            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-        </form>
-    </div>
 </div>
 </body>
 </html>

@@ -52,6 +52,8 @@ public class DbSeederService {
         seedCoaches(language1, country1);
         seedPlayers(language1, country1, team1);
 
+        seedAdmin(language1, country1);
+
     }
 
     public void seedCoaches(Language language1, Country country1) {
@@ -109,5 +111,21 @@ public class DbSeederService {
 
             calendar.add(Calendar.YEAR, -1);
         }
+    }
+
+    public void seedAdmin(Language language1, Country country1) {
+        User user1 = new User();
+        user1.setName("admin");
+        List<Language>languages=new ArrayList<>();
+        languages.add(language1);
+        user1.setLanguages(languages);
+        user1.setCountry(country1);
+        user1.setEmail("admin@admin.hu");
+        user1.setDate(new Date());
+        user1.setPassword("admin");
+        user1.setActive(true);
+        user1.setApproved(true);
+        user1.setAdmin(true);
+        userRepository.save(user1);
     }
 }
