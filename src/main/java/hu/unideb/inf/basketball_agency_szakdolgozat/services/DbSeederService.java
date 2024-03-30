@@ -50,51 +50,7 @@ public class DbSeederService {
         teamRepository.save(team1);
 
         seedCoaches(language1, country1);
-
-
-        User user2 = new User();
-        user2.setName("Ember2");
-        user2.setCountry(country1);
-        List<Language> languages2 = new ArrayList<>();
-        languages2.add(language1);
-        user2.setLanguages(languages2);
-        user2.setEmail("2@ember2.hu");
-        user2.setDate(new Date());
-        user2.setPassword("1234");
-        userRepository.save(user2);
-
-        Player player1 = new Player();
-        player1.setHand(Hand.RIGHT);
-        player1.setHeight(190);
-        player1.setPosition(2);
-        player1.setMinSalary(120000);
-        player1.setWeight(89);
-        player1.setContract(true);
-        player1.setUser(user2);
-        player1.setTeam(team1);
-        playerRepository.save(player1);
-
-        User user3 = new User();
-        user3.setName("Player3");
-        user3.setCountry(country1);
-        List<Language> languages3 = new ArrayList<>();
-        languages3.add(language1);
-        user3.setLanguages(languages3);
-        user3.setEmail("3@ember3.hu");
-        user3.setDate(new Date());
-        user3.setPassword("1234");
-        userRepository.save(user3);
-
-        Player player2 = new Player();
-        player2.setHand(Hand.LEFT);
-        player2.setHeight(201);
-        player2.setPosition(4);
-        player2.setMinSalary(220000);
-        player2.setWeight(105);
-        player2.setContract(false);
-        player2.setUser(user3);
-        player2.setTeam(team1);
-        playerRepository.save(player2);
+        seedPlayers(language1, country1, team1);
 
     }
 
@@ -122,6 +78,36 @@ public class DbSeederService {
 
             calendar.add(Calendar.YEAR, -1);
         }
+    }
 
+    public void seedPlayers(Language language1, Country country1, Team team1) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+
+        for (int i = 0; i < 12; i++) {
+            User user2 = new User();
+            user2.setName("EmberJatekos" + i);
+            user2.setCountry(country1);
+            List<Language> languages2 = new ArrayList<>();
+            languages2.add(language1);
+            user2.setLanguages(languages2);
+            user2.setEmail("2@ember2.hu" + i);
+            user2.setDate(calendar.getTime());
+            user2.setPassword("1234");
+            userRepository.save(user2);
+
+            Player player1 = new Player();
+            player1.setHand(Hand.RIGHT);
+            player1.setHeight(190);
+            player1.setPosition(2);
+            player1.setMinSalary(120000);
+            player1.setWeight(89);
+            player1.setContract(true);
+            player1.setUser(user2);
+            player1.setTeam(team1);
+            playerRepository.save(player1);
+
+            calendar.add(Calendar.YEAR, -1);
+        }
     }
 }

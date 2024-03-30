@@ -12,12 +12,32 @@ function tableClickHandler(e) {
             <td>${tableRow.dataset.birthday}</td>
         </tr>
         <tr>
-            <th>Telefonszám</th>
-            <td>${tableRow.dataset.height}</td>
-        </tr>
-        <tr>
             <th>E-mail</th>
             <td>${tableRow.dataset.email}</td>
+        </tr>
+        <tr>
+            <th>Magassag</th>
+            <th>${tableRow.dataset.height}</th>
+        </tr>
+        <tr>
+            <th>Suly</th>
+            <th>${tableRow.dataset.weight}</th>
+        </tr>
+        <tr>
+            <th>Pozicio</th>
+            <th>${tableRow.dataset.position}</th>
+        </tr>
+        <tr>
+            <th>Minimum fizetesi igeny</th>
+            <th>${tableRow.dataset.minSalary}</th>
+        </tr>
+        <tr>
+            <th>Milyen kezes</th>
+            <th>${tableRow.dataset.hand}</th>
+        </tr>
+        <tr>
+            <th>Van-e szerzodese</th>
+            <th>${tableRow.dataset.contract}</th>
         </tr>
     `;
 
