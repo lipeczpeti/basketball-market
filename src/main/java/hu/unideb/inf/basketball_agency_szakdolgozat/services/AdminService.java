@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -41,5 +42,19 @@ public class AdminService {
 
         return adminDto;
     }
+
+    public boolean approveUser(int id) {
+        Optional<User> user = userRepository.findById(id);
+
+        if (user.isPresent()) {
+            user.get().setApproved(true);
+            userRepository.save(user.get());
+
+            return true;
+        }
+
+        return false;
+    }
+
 
 }

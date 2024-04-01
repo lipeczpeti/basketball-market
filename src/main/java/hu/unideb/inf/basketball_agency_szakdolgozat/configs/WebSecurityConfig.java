@@ -43,10 +43,12 @@ public class WebSecurityConfig implements WebMvcConfigurer {
         http.authorizeHttpRequests((requests) -> requests
                     .requestMatchers(antMatcher("/h2-console/*")).permitAll()
                     .requestMatchers(builder.pattern("/static/**")).permitAll()
-                    .requestMatchers(builder.pattern("/")).permitAll()
+
                     .requestMatchers(builder.pattern("/login")).permitAll()
                     .requestMatchers(builder.pattern("/edzo")).hasRole("COACH")
                     .requestMatchers(builder.pattern("/admin")).hasRole("ADMIN")
+                        .requestMatchers(builder.pattern("/admin/felhasznalo-jovahagyas")).hasRole("ADMIN")
+                        .requestMatchers(builder.pattern("/")).permitAll()
                     .anyRequest().authenticated()
             )
             .formLogin(login -> {

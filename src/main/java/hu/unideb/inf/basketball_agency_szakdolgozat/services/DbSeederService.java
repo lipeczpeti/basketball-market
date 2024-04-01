@@ -62,7 +62,7 @@ public class DbSeederService {
 
         for (int i = 0; i < 12; i++) {
             User user1 = new User();
-            user1.setName("Ember"+i);
+            user1.setName("coachr"+i);
             List<Language>languages=new ArrayList<>();
             languages.add(language1);
             user1.setLanguages(languages);
@@ -71,6 +71,7 @@ public class DbSeederService {
             user1.setDate(calendar.getTime());
             user1.setPassword("123");
             user1.setActive(true);
+            user1.setApproved(i % 2 == 0);
             userRepository.save(user1);
 
             Coach coach1 = new Coach();
@@ -96,6 +97,7 @@ public class DbSeederService {
             user2.setEmail("2@ember2.hu" + i);
             user2.setDate(calendar.getTime());
             user2.setPassword("1234");
+            user2.setApproved(i % 2 == 0);
             userRepository.save(user2);
 
             Player player1 = new Player();
