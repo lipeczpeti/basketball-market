@@ -3,7 +3,7 @@ const avatarImg = document.querySelector("#profile-details-avatar");
 
 function tableClickHandler(e) {
     const tableRow = e.currentTarget;
-    const newRow = `
+    let newRow = `
         <tr>
             <th>Név:</th>
             <td>${tableRow.dataset.name}</td>
@@ -21,6 +21,13 @@ function tableClickHandler(e) {
             <td>${tableRow.dataset.email}</td>
         </tr>
     `;
+
+    if (tableRow.dataset.cv && tableRow.dataset.cv !== 'null') {
+        newRow+= `<tr>
+            <th>CV:</th>
+            <td><a href="/static/${tableRow.dataset.cv}" th:download="${tableRow.dataset.cv}">Letöltés</a></td>
+        </tr>`
+    }
 
     profileModalBody.innerHTML = newRow;
     if (tableRow.dataset.avatar && tableRow.dataset.avatar !== "null") {

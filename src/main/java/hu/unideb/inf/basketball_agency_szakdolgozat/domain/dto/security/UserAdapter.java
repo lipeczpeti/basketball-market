@@ -75,4 +75,9 @@ public class UserAdapter implements UserDetails {
     public String getDate() {
         return user.getDate().toString().split(" ")[0];
     }
+    public String getAvatar() {
+        return this.user.getAvatar() == null || this.user.getAvatar().isEmpty()
+                ? "2544.avif"
+                : this.user.getAvatar();
+    }
 }

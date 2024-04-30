@@ -1,10 +1,7 @@
 package hu.unideb.inf.basketball_agency_szakdolgozat.services;
 
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.entity.*;
-import hu.unideb.inf.basketball_agency_szakdolgozat.repositories.CountryRepository;
-import hu.unideb.inf.basketball_agency_szakdolgozat.repositories.PlayerRepository;
-import hu.unideb.inf.basketball_agency_szakdolgozat.repositories.TeamRepository;
-import hu.unideb.inf.basketball_agency_szakdolgozat.repositories.UserRepository;
+import hu.unideb.inf.basketball_agency_szakdolgozat.repositories.*;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -35,6 +32,7 @@ public class ProfileSettingsService {
     private final PlayerRepository playerRepository;
     private final CountryRepository countryRepository;
     private final PasswordEncoder passwordEncoder;
+    private final CoachRepository coachRepository;
 
     public boolean updateUserDetails(int id, String name, String email, int teamId) {
         Optional<User> user = userRepository.findById(id);
@@ -99,18 +97,30 @@ public class ProfileSettingsService {
     }
 
     public void uploadPicture(User user, MultipartFile file) {
+        String filename = uploadFile(file);
+
+        user.setAvatar(filename);
+        userRepository.save(user);
+    }
+
+    public void uploadCv(Coach coach, MultipartFile file) {
+        String filename = uploadFile(file);
+
+        coach.setCv(filename);
+    }
+
+    private String uploadFile(MultipartFile file) {
         String filename = file.getOriginalFilename();
         filename =  UUID.randomUUID() + "." + filename.split("\\.")[1];
 
         try {
             file.transferTo(new File(pictureFolder + filename));
+            return filename;
+
         } catch (IOException e) {
             e.printStackTrace();
-            return;
+            return "";
         }
-
-        user.setAvatar(filename);
-        userRepository.save(user);
     }
 }
 

@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,12 +40,16 @@ public class ProfileSettingsController {
     }
 
     @PostMapping(path = "/profile")
-    public String profileModificationProcess(HttpServletRequest request, Model model, @RequestParam(defaultValue = "noError", required = false) String error, @AuthenticationPrincipal UserAdapter loggedInUser){
+    public String profileModificationProcess(HttpServletRequest request, Model model, @RequestParam(defaultValue = "noError", required = false) String error, @AuthenticationPrincipal UserAdapter loggedInUser, @RequestParam(name = "avatar") MultipartFile avatar){
         model.addAttribute("teams", teamService.findAll());
         model.addAttribute("countries", countryService.findAll());
         model.addAttribute("loggedInUser", loggedInUser);
 
         if (request.getParameter("type").equals("account_general")) {
+            if (!avatar.isEmpty()) {
+                profileSettingsService.uploadPicture(loggedInUser.getUser(), avatar);
+            }
+
             boolean isSuccessful
                     = profileSettingsService.updateUserDetails(loggedInUser.getUser().getId(), request.getParameter("username"), request.getParameter("email"), Integer.parseInt(request.getParameter("team")));
 

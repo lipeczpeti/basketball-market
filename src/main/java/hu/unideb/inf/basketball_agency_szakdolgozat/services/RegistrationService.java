@@ -33,7 +33,7 @@ public class RegistrationService {
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 
-    public String registeredCoach(String userName, String password1, String password2, String email, MultipartFile file,String date, String phoneNumber, String cv, int countryId){
+    public String registeredCoach(String userName, String password1, String password2, String email, MultipartFile file,String date, String phoneNumber, MultipartFile cv, int countryId){
         if (!password1.equals(password2)) {
             return PASSWORD_MISMATCH_MESSAGE;
         }
@@ -43,10 +43,14 @@ public class RegistrationService {
             return USER_ALREADY_EXISTS;
         }
 
+
+
         Coach coach = new Coach();
         coach.setPhoneNumber(phoneNumber);
-        coach.setCv("cv");
         coach.setUser(user);
+
+        profileSettingsService.uploadCv(coach, cv);
+
         coachRepository.save(coach);
         return SUCCESS_MESSAGE;
     }

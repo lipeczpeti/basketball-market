@@ -45,7 +45,7 @@ public class RegistrationController {
                     profilKep,
                     request.getParameter("birthday"),
                     request.getParameter("phoneNumber"),
-                    null,
+                    cv,
                     Integer.parseInt(request.getParameter("country")));
         }else{
             result = registrationService.registeredPlayer(
