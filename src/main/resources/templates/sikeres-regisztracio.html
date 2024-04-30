@@ -19,8 +19,11 @@
                 <h2>
                     Regisztráció
                 </h2>
-                <div class="alert alert-success">
-                    Sikeres Regisztráció!
+                <div th:if='${successfulRegistration.toString().equals("true")}' th:text="${message}" class="alert alert-success">
+
+                </div>
+                <div th:if='${successfulRegistration.toString().equals("false")}' th:text="${message}" class="alert alert-danger">
+
                 </div>
             </div>
             <div class="col-md-1">

@@ -21,8 +21,17 @@ public class AdminController {
 
     @PostMapping(path = "/admin/felhasznalo-jovahagyas")
     public String approveUser(Model model, @RequestParam(required = false) int userId) {
-        model.addAttribute("unapprovedUsers", adminService.getAdminPageData());
         model.addAttribute("successApprove", adminService.approveUser(userId));
+        model.addAttribute("unapprovedUsers", adminService.getAdminPageData());
+
+        return "admin";
+
+    }
+
+    @PostMapping(path = "/admin/felhasznalo-torles")
+    public String deleteUser(Model model, @RequestParam(required = false) int userId) {
+        model.addAttribute("successDelete", adminService.deleteUser(userId));
+        model.addAttribute("unapprovedUsers", adminService.getAdminPageData());
 
         return "admin";
 

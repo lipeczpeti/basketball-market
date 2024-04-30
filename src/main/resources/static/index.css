@@ -4,7 +4,7 @@
 }
 
 .bg-sajatszin{
-    background-color: rgb(58, 107, 86);
+    background-color: rgb(113, 30, 35);
 }
 
 .pagination-center{
@@ -21,4 +21,12 @@
 .body-footer-block {
     position: relative !important;
     bottom: auto !important;
+}
+
+.coach-entry {
+    display: none;
+}
+
+.avatar-mini {
+    width: 100px;
 }

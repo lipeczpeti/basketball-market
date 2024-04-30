@@ -36,7 +36,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                        <tr class="coach-row-table" data-bs-toggle="modal" data-bs-target="#exampleModal" th:each="player, playerStat : ${players}" th:data-id="${player.getId()}" th:data-name="${player.getUser().getName()}" th:data-birthday="${player.getUser().getDate()}"  th:data-email="${player.getUser().getEmail()}" th:data-height="${player.getHeight()}" th:data-weight="${player.getWeight()}" th:data-position="${player.getPosition()}" th:data-min-salary="${player.getMinSalary()}" th:data-hand="${player.getHand()}" th:data-contract="${player.isContract()}">
+                        <tr class="coach-row-table" data-bs-toggle="modal" data-bs-target="#exampleModal" th:each="player, playerStat : ${players}" th:data-id="${player.getId()}" th:data-name="${player.getUser().getName()}" th:data-birthday="${player.getUser().getDate()}"  th:data-email="${player.getUser().getEmail()}" th:data-height="${player.getHeight()}" th:data-weight="${player.getWeight()}" th:data-position="${player.getPosition()}" th:data-min-salary="${player.getMinSalary()}" th:data-hand="${player.getHand()}" th:data-contract="${player.isContract()}" th:data-team="${player.getTeam().getName()}" th:data-avatar="${player.getUser().getAvatar()}">
                             <th th:text="${player.getId()}" scope="row"></th>
                             <td th:text="${player.getUser().getName()}"></td>
                             <td th:text="${player.getUser().getDate()}"></td>
@@ -58,6 +58,10 @@
         </div>
 
         <div th:insert="components/profileDetails::profileDetails">
+
+        </div>
+
+        <div th:insert="components/footer::footer">
 
         </div>
 

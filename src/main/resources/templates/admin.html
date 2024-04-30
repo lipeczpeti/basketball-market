@@ -24,7 +24,10 @@
                 Sikeres jóváhagyás
             </div>
 
-            <-- miert csak masodikra töröl?-->
+            <div class="alert alert-success fw-bold text-start" th:if="${successDelete}">
+                Sikeres törlés
+            </div>
+
             <table class="table table-hover">
                 <thead>
                     <tr>

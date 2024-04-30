@@ -1,6 +1,7 @@
 package hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto.security;
 
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.entity.User;
+import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+@Getter
 public class UserAdapter implements UserDetails {
 
     private User user;
@@ -57,7 +59,7 @@ public class UserAdapter implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return user.isActive();
+        return user.isApproved();
     }
 
     @Override
@@ -67,6 +69,10 @@ public class UserAdapter implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return user.isApproved();
+        return user.isActive();
+    }
+
+    public String getDate() {
+        return user.getDate().toString().split(" ")[0];
     }
 }

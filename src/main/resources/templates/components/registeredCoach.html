@@ -16,14 +16,18 @@
                     <thead>
                     <tr>
                         <th scope="col"></th>
+                        <th scope="col">Profil kép</th>
                         <th scope="col">Név</th>
                         <th scope="col">Életkor</th>
-                        <th scope="col">Profil kép</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="coach:${homeData.getCoaches()}">
                         <th th:text="${coach.getId()}" scope="row"></th>
+                        <td>
+                            <img th:if="${coach.getUser().getAvatar() != null}" th:src='${"static/" + coach.getUser().getAvatar()}' class="img-thumbnail avatar-mini" />
+                            <img th:if="${coach.getUser().getAvatar() == null}" src='static/Doc-Rivers.png' class="img-thumbnail avatar-mini" />
+                        </td>
                         <td th:text="${coach.getUser().getName()}"></td>
                         <td th:text="${coach.getUser().getDate()}"></td>
                         <td></td>

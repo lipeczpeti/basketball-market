@@ -31,7 +31,7 @@ public class User {
     private List<Language> languages;
 
     private String password;
-    private File avatar;
+    private String avatar;
     private boolean approved;
     private boolean active;
 

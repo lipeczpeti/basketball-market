@@ -16,17 +16,17 @@
                     <thead>
                     <tr>
                         <th scope="col"></th>
-                        <th scope="col">Név</th>
+                        <th scope="col">Csapat logó</th>
                         <th scope="col"></th>
-                        <th scope="col">Profil kép</th>
+                        <th scope="col">Név</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="team:${homeData.getTeams()}">
                         <th th:text="${team.getId()}" scope="row"></th>
+                        <td></td>
+                        <td></td>
                         <td th:text="${team.getName()}"></td>
-                        <td></td>
-                        <td></td>
                     </tr>
                     </tbody>
                 </table>

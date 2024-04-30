@@ -1,9 +1,6 @@
 package hu.unideb.inf.basketball_agency_szakdolgozat.domain.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -19,7 +16,8 @@ public class Coach {
     @GeneratedValue
     private int id;
     private String phoneNumber;
-    private File cv;
+    private String cv;
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 }

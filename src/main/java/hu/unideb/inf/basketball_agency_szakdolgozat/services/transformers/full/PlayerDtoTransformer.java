@@ -5,6 +5,7 @@ import hu.unideb.inf.basketball_agency_szakdolgozat.domain.entity.Player;
 import hu.unideb.inf.basketball_agency_szakdolgozat.services.transformers.mini.TeamCategoryMiniDtoTransformer;
 import hu.unideb.inf.basketball_agency_szakdolgozat.services.transformers.mini.TeamMiniDtoTransformer;
 import hu.unideb.inf.basketball_agency_szakdolgozat.services.transformers.mini.UserMiniDtoTransformer;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,11 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
+@AllArgsConstructor
 public class PlayerDtoTransformer {
-    @Autowired
-    private UserMiniDtoTransformer userMiniDtoTransformer;
 
-    @Autowired
+    private UserMiniDtoTransformer userMiniDtoTransformer;
     private TeamMiniDtoTransformer teamMiniDtoTransformer;
 
 

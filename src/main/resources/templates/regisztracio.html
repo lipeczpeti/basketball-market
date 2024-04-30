@@ -21,12 +21,12 @@
                 </h2>
                 <table class="table w-50 mx-auto">
                     <tbody>
-                        <form action="/regisztracio" method="post">
+                        <form action="/regisztracio" method="post" enctype="multipart/form-data">
                             <tr>
                                 <th scope="row">Felhasznaló típus</th>
                                 <td>
-                                    <input type="radio" name="userType" value="coach"/> Edző <br>
-                                    <input type="radio" name="userType" value="player"/> Játékos <br>
+                                    <input type="radio" name="userType" value="coach" id="coach-select-radio"/> Edző <br>
+                                    <input type="radio" name="userType" value="player" id="player-select-radio" checked /> Játékos <br>
                                 </td>
                             </tr>
                           <tr>
@@ -55,15 +55,63 @@
                             <td><input type="date" name="birthday"></td>
                           </tr>
                             <tr>
+                                <th scope="row">Ország</th>
+                                <td>
+                                    <select name="country">
+                                        <option th:each="country : ${countries}" th:value="${country.getId()}" th:text="${country.getName()}"></option>
+                                    </select>
+                                </td>
+                            </tr>
+
+                            <!-- COACH FORMS -->
+                            <tr class="coach-entry">
                                 <th scope="row">Telefonszám</th>
                                 <td><input type="text" name="phoneNumber"></td>
                             </tr>
-                            <tr>
+                            <tr class="coach-entry">
                                 <th scope="row">CV (önéletrajz)</th>
                                 <td><input type="file" name="cv"></td>
                             </tr>
+
+                            <!-- PLAYER FORMS -->
+                            <tr class="player-entry">
+                                <th scope="row">Magasság</th>
+                                <td><input type="number" name="height"></td>
+                            </tr>
+                            <tr class="player-entry">
+                                <th scope="row">Testsúly</th>
+                                <td><input type="number" name="weight"></td>
+                            </tr>
+                            <tr class="player-entry">
+                                <th scope="row">Pozició</th>
+                                <td><input type="number" name="position"></td>
+                            </tr>
+                            <tr class="player-entry">
+                                <th scope="row">Fizetési igény</th>
+                                <td><input type="number" name="minSalary"></td>
+                            </tr>
+                            <tr class="player-entry">
+                                <th scope="row">Kéz</th>
+                                <td>Bal <input type="radio" name="hand" value="LEFT"> Jobb <input type="radio" name="hand" value="RIGHT"></td>
+                            </tr>
+                            <tr class="player-entry">
+                                <th scope="row">Élő szerződés</th>
+                                <td>Van <input type="radio" name="contract" value="true"> Nincs <input type="radio" name="contract" value="false"></td>
+                            </tr>
+                            <tr class="player-entry">
+                                <th scope="row">Csapat</th>
+                                <td>
+                                    <select name="team">
+                                        <option th:each="team : ${teams}" th:value="${team.getId()}" th:text="${team.getName()}"></option>
+                                    </select>
+                                </td>
+                            </tr>
+
                           <tr>
-                            <th><button class="btn btn-primary text-light" role="button">Regisztrálás</button></th>
+                            <th>
+                                <input type="submit" class="btn btn-primary text-light" value="Regisztrálás" />
+                                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                            </th>
                             <th><a class="btn btn-primary text-light" href="#" role="button">Kilép</a></th>
                           </tr>
                         </form>
@@ -79,5 +127,6 @@
   <div th:insert="components/footer::footer">
 
   </div>
+  <script src="/static/registration.js"></script>
 </body>
 </html>

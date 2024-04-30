@@ -4,6 +4,7 @@ import hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto.entity.full.TeamD
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto.entity.mini.TeamCategoryMiniDto;
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.entity.Team;
 import hu.unideb.inf.basketball_agency_szakdolgozat.services.transformers.mini.TeamCategoryMiniDtoTransformer;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,8 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
+@AllArgsConstructor
 public class TeamDtoTransformer {
-    @Autowired
     private TeamCategoryMiniDtoTransformer teamCategoryMiniDtoTransformer;
 
     public TeamDto transformWithDependencies(Team team){

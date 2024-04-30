@@ -35,7 +35,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="coach-row-table" data-bs-toggle="modal" data-bs-target="#exampleModal" th:each="coach, coachStat : ${coaches}" th:id='${"coach-row-"+coachStat.index}' th:data-id="${coach.getId()}" th:data-name="${coach.getUser().getName()}" th:data-birthday="${coach.getUser().getDate()}" th:data-phone-number="${coach.getPhoneNumber()}" th:data-email="${coach.getUser().getEmail()}">
+                      <tr class="coach-row-table" data-bs-toggle="modal" data-bs-target="#exampleModal" th:each="coach, coachStat : ${coaches}" th:id='${"coach-row-"+coachStat.index}' th:data-id="${coach.getId()}" th:data-name="${coach.getUser().getName()}" th:data-birthday="${coach.getUser().getDate()}" th:data-phone-number="${coach.getPhoneNumber()}" th:data-email="${coach.getUser().getEmail()}" th:data-avatar="${coach.getUser().getAvatar()}">
                         <th th:text="${coach.getId()}" scope="row"></th>
                         <td th:text="${coach.getUser().getName()}"></td>
                         <td th:text="${coach.getUser().getDate()}"></td>
@@ -55,6 +55,10 @@
     </div>
 
     <div th:insert="components/profileDetails::profileDetails">
+
+    </div>
+
+    <div th:insert="components/footer::footer">
 
     </div>
 

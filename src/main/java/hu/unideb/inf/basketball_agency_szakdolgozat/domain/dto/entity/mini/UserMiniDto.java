@@ -16,7 +16,7 @@ public class UserMiniDto {
     private String email;
     private String date;
     private String password;
-    private File avatar;
+    private String avatar;
     private boolean approved;
     private boolean active;
 }

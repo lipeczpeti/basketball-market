@@ -6,11 +6,12 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User,Integer> {
-    User findByName(String name);
     User findByEmail(String email);
+    Optional<User> findByIdAndPassword(int id, String password);
     List<User> findByNameContainsAndDateAfterAndDateBefore(String name, Date min, Date max);
 
     List<User> findByApprovedFalse();

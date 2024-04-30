@@ -2,11 +2,14 @@ package hu.unideb.inf.basketball_agency_szakdolgozat.services;
 
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto.page.HomeDto;
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.entity.Coach;
+import hu.unideb.inf.basketball_agency_szakdolgozat.domain.entity.Country;
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.entity.Player;
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.entity.Team;
 import hu.unideb.inf.basketball_agency_szakdolgozat.repositories.CoachRepository;
+import hu.unideb.inf.basketball_agency_szakdolgozat.repositories.CountryRepository;
 import hu.unideb.inf.basketball_agency_szakdolgozat.repositories.PlayerRepository;
 import hu.unideb.inf.basketball_agency_szakdolgozat.repositories.TeamRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import hu.unideb.inf.basketball_agency_szakdolgozat.services.transformers.full.HomeDtoTransformer;
 import org.springframework.stereotype.Service;
@@ -14,14 +17,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class HomeService {
-    @Autowired
+
     private CoachRepository coachRepository;
-    @Autowired
     private PlayerRepository playerRepository;
-    @Autowired
     private TeamRepository teamRepository;
-    @Autowired
     private HomeDtoTransformer homeDtoTransformer;
 
     public HomeDto getHome(){
@@ -32,11 +33,7 @@ public class HomeService {
         List<Coach> coaches = coachRepository.findFirst5ByOrderByIdDesc();
         List<Team> teams = teamRepository.findFirst5ByOrderByIdDesc();
 
-        HomeDto result = homeDtoTransformer.transform(coachCount,playerCount,clubCount,players,coaches,teams);
-
-
-
-        return result;
+        return homeDtoTransformer.transform(coachCount,playerCount,clubCount,players,coaches,teams);
     }
 
 }

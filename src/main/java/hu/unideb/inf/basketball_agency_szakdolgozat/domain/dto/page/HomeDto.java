@@ -1,9 +1,11 @@
 package hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto.page;
 
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto.entity.full.CoachDto;
+import hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto.entity.full.CountryDto;
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto.entity.full.PlayerDto;
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.dto.entity.full.TeamDto;
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.entity.Coach;
+import hu.unideb.inf.basketball_agency_szakdolgozat.domain.entity.Country;
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.entity.Player;
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.entity.Team;
 import lombok.*;
@@ -22,5 +24,6 @@ public class HomeDto {
     private List<PlayerDto> players;
     private List<CoachDto> coaches;
     private List<TeamDto> teams;
+    private List<CountryDto> countries;
 
 }

@@ -14,7 +14,7 @@ import java.io.File;
 public class CoachDto {
     private int id;
     private String phoneNumber;
-    private File cv;
+    private String cv;
 
     private UserMiniDto user;
 }
