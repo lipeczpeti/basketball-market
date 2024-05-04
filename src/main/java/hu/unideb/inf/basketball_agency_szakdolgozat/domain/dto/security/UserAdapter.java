@@ -42,6 +42,16 @@ public class UserAdapter implements UserDetails {
         return grantedAuthorities;
     }
 
+    public String getMainRole() {
+        Collection<? extends GrantedAuthority> authorities = getAuthorities();
+
+        if (authorities.isEmpty()) {
+            return "NO ROLE";
+        }
+
+        return getAuthorities().stream().toList().get(0).getAuthority();
+    }
+
     @Override
     public String getPassword() {
         return user.getPassword();

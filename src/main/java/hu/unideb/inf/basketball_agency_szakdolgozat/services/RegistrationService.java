@@ -3,6 +3,7 @@ package hu.unideb.inf.basketball_agency_szakdolgozat.services;
 import hu.unideb.inf.basketball_agency_szakdolgozat.domain.entity.*;
 import hu.unideb.inf.basketball_agency_szakdolgozat.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -29,6 +30,8 @@ public class RegistrationService {
     CountryRepository countryRepository;
     @Autowired
     ProfileSettingsService profileSettingsService;
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -88,7 +91,7 @@ public class RegistrationService {
 
             User user = new User();
             user.setName(userName);
-            user.setPassword(password1);
+            user.setPassword(passwordEncoder.encode(password1));
             user.setEmail(email);
             user.setActive(true);
             user.setCountry(country);

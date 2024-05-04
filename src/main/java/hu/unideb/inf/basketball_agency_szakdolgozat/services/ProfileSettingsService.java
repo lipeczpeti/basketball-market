@@ -38,17 +38,19 @@ public class ProfileSettingsService {
         Optional<User> user = userRepository.findById(id);
 
         if (user.isPresent()) {
-            Team team = teamRepository.findById(teamId).get();
 
             user.get().setName(name);
             user.get().setEmail(email);
 
             userRepository.save(user.get());
 
-            Player player = user.get().getPlayer().get(0);
-            player.setTeam(team);
+            if (user.get().getPlayer().size() == 1) {
+                Team team = teamRepository.findById(teamId).get();
+                Player player = user.get().getPlayer().get(0);
+                player.setTeam(team);
 
-            playerRepository.save(player);
+                playerRepository.save(player);
+            }
 
             return true;
         }

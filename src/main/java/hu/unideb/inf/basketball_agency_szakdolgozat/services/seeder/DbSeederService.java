@@ -110,7 +110,7 @@ public class DbSeederService {
             user2.setLanguages(languages2);
             user2.setEmail("lebron.j@gmail.com" + i);
             user2.setDate(calendar.getTime());
-            user2.setPassword("1234");
+            user2.setPassword(passwordEncoder.encode("1234"));
             user2.setActive(true);
             user2.setApproved(i % 2 == 0);
             userRepository.save(user2);
@@ -139,7 +139,7 @@ public class DbSeederService {
         user1.setCountry(country1);
         user1.setEmail("admin@admin.hu");
         user1.setDate(new Date());
-        user1.setPassword("admin");
+        user1.setPassword(passwordEncoder.encode("admin"));
         user1.setActive(true);
         user1.setApproved(true);
         user1.setAdmin(true);
