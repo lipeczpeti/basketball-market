@@ -12,28 +12,30 @@
         <div class="col-md-8">
             <div class="bg-white rounded m-4  p-4">
                 <h2>Regisztrált Edzők</h2>
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th scope="col"></th>
-                        <th scope="col">Profil kép</th>
-                        <th scope="col">Név</th>
-                        <th scope="col">Életkor</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="coach:${homeData.getCoaches()}">
-                        <th th:text="${coach.getId()}" scope="row"></th>
-                        <td>
-                            <img th:if="${coach.getUser().getAvatar() != null}" th:src='${"/static/" + coach.getUser().getAvatar()}' class="img-thumbnail avatar-mini" />
-                            <img th:if="${coach.getUser().getAvatar() == null}" src='/static/Doc-Rivers.png' class="img-thumbnail avatar-mini" />
-                        </td>
-                        <td th:text="${coach.getUser().getName()}"></td>
-                        <td th:text="${coach.getUser().getDate()}"></td>
-                        <td></td>
-                    </tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Profil kép</th>
+                            <th scope="col">Név</th>
+                            <th scope="col">Életkor</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="coach:${homeData.getCoaches()}">
+                            <th th:text="${coach.getId()}" scope="row"></th>
+                            <td>
+                                <img th:if="${coach.getUser().getAvatar() != null}" th:src='${"/static/" + coach.getUser().getAvatar()}' class="img-thumbnail avatar-mini" />
+                                <img th:if="${coach.getUser().getAvatar() == null}" src='/static/Doc-Rivers.png' class="img-thumbnail avatar-mini" />
+                            </td>
+                            <td th:text="${coach.getUser().getName()}"></td>
+                            <td th:text="${coach.getUser().getDate()}"></td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         <div class="col-md-2">

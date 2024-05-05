@@ -30,3 +30,10 @@
 .avatar-mini {
     width: 100px;
 }
+
+.img-header {
+    height: 880px;
+    background-image: url("/static/bg_done.png");
+    background-size: contain;
+    background-position: center;
+}

@@ -12,33 +12,35 @@
         <div class="col-md-8">
             <div class="bg-white rounded m-4  p-4">
                 <h2>Regisztrált Játékosok</h2>
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th scope="col"></th>
-                        <th scope="col">Profil kép</th>
-                        <th scope="col">Név</th>
-                        <th scope="col">Életkor</th>
-                        <th scope="col">Magasság</th>
-                        <th scope="col">Szerződés</th>
-                        <th scope="col">Csapat</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="player:${homeData.getPlayers()}">
-                        <th th:text="${player.getId()}" scope="row"></th>
-                        <td>
-                            <img th:if="${player.getUser().getAvatar() != null}" th:src='${"static/" + player.getUser().getAvatar()}' class="img-thumbnail avatar-mini" />
-                            <img th:if="${player.getUser().getAvatar() == null}" src='static/2544.avif' class="img-thumbnail avatar-mini" />
-                        </td>
-                        <td th:text="${player.getUser().getName()}"></td>
-                        <td th:text="${player.getUser().getDate()}"></td>
-                        <td th:text="${player.getHeight}+ cm"></td>
-                        <td th:text='${player.isContract() ? "Van" : "Nincs"}'></td>
-                        <td th:text="${player.getTeam().getName()}"></td>
-                    </tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Profil kép</th>
+                            <th scope="col">Név</th>
+                            <th scope="col">Életkor</th>
+                            <th scope="col">Magasság</th>
+                            <th scope="col">Szerződés</th>
+                            <th scope="col">Csapat</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="player:${homeData.getPlayers()}">
+                            <th th:text="${player.getId()}" scope="row"></th>
+                            <td>
+                                <img th:if="${player.getUser().getAvatar() != null}" th:src='${"static/" + player.getUser().getAvatar()}' class="img-thumbnail avatar-mini" />
+                                <img th:if="${player.getUser().getAvatar() == null}" src='static/2544.avif' class="img-thumbnail avatar-mini" />
+                            </td>
+                            <td th:text="${player.getUser().getName()}"></td>
+                            <td th:text="${player.getUser().getDate()}"></td>
+                            <td th:text="${player.getHeight}+ cm"></td>
+                            <td th:text='${player.isContract() ? "Van" : "Nincs"}'></td>
+                            <td th:text="${player.getTeam().getName()}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         <div class="col-md-2">
